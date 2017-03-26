@@ -1,0 +1,192 @@
+<!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Build your burger!
+                    <img src="/assets/img/burger.png" id="nav-burger" alt="nav Burger">
+                </a>
+            </div>
+        
+            <!-- ik Comment out for future use Collect the nav links, forms, and other content for toggling
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">My link1</a>
+                    </li>
+                    <li>
+                        <a href="#">My link2</a>
+                    </li>
+                    <li>
+                        <a href="#">My link3</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+        <div class="container-fluid nav-stripe"></div>
+    </nav>
+
+
+<div class="container text-center" >
+	<div class="carousel-container">
+		<div class="bs-example">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<div class="overlay"><h1>Yummy Burgers...</h1></div>
+                <!-- Carousel indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>   
+                <!-- Wrapper for carousel items -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="./assets/img/burgerrest.jpg" alt="Restaurant Slide">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/burger.png" alt="Burger Slide">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/burger2.png" alt="Burger2 Slide">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/burgercrunch.jpg" alt="Burger Crunch Slide">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/burgeregg.jpg" alt="Burger n egg Slide">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/burgerpea.png" alt="Burger w peas Slide">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/hamburglar.jpg" alt="Hamburglar Slide">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/burgerphilly.jpg" alt="Philly Burger Slide">
+                    </div>
+                    <div class="item">
+                        <img src="./assets/img/burgerveggie.png" alt="Veggie Burger Slide">
+                    </div>
+                </div>
+                <!-- Carousel controls -->
+                <a class="carousel-control left" href="#myCarousel" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="carousel-control right" href="#myCarousel" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>          
+        </div>
+	</div>	
+	<h2>Add a Burger</h2>
+		<form class="create-update-form" action="/" method="POST">
+			<div class="form-group">
+				<label for="burg"></label>
+				<input type="text" name="burger_name" placeholder="Name-da-burger!"<br>
+				<button type="submit" class="btn btn-primary btn-sm">Add</button>
+			</div>
+		</form>	
+	<div class="row">
+	  	<div class="col-md-6 col-sm-6 col-xs-6">
+			<ul class="burger-bullet"><h2>Choose a Burger</h2>
+				{{#each burgers}}
+					{{#unless this.devoured}}
+						<li class"line-up-button">
+							{{this.burger_name}}
+							<form action="/{{this.id}}?_method=PUT" method="POST">
+								<input type="hidden" name="devoured" value="true">
+								<button type="submit" class="btn btn-primary btn-sm">Chow Time!</button>
+							</form>
+			  			</li>
+			  		{{/unless}}
+			  	{{/each}}
+			</ul>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<ul><h2>Devoured!</h2>
+				{{#each burgers}}
+					{{#if this.devoured}}
+						<li>
+							<div>
+							{{this.burger_name}}
+							<form action="/{{this.id}}?_method=PUT" method="POST">
+								<input type="hidden" name="devoured" value="false">
+								<button class="btn btn-primary btn-sm">Yum, It was delicious!</button>
+			  				</form>
+			  				</div>
+			  			</li>
+			  		
+			  		{{/if}}
+			  	{{/each}}
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!-- Footer -->
+    <div id="footer_push"></div>
+        <div id="footer">
+        <div class="container-fluid nav-stripe"></div>
+
+            <footer class="footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5 col-xs-5">
+                            <span class="copyright">2017 &copy; ivonne.komis</span>
+                        </div>
+                        <div class="col-md-5 col-sm-5 col-xs-5"></div>
+                        <div class="col-md-2 col-sm-2 col-xs-2">
+                            <ul  class="list-inline social-links social-links-footer">
+                              <li>
+                                <a href="https://twitter.com/ivonnekomis"><i class="fa fa-twitter"></i></a>
+                              </li>
+                              <li>
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                              </li>
+                              <li>
+                                <a href="https://www.linkedin.com/in/ivonne-komis-a60994b"><i class="fa fa-linkedin"></i></a>
+                              </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<!-- end footer  -->
+
+
+<!-- script and spcript links below -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+        $(document).ready(function() {
+           $('.item').each(function() {
+               if (!$(this).hasClass("active")) {
+                       $(this).addClass("active");
+               } else {
+                   $(this).removeClass("active");
+               }
+           });
+       });
+
+</script>
+
+
+
+

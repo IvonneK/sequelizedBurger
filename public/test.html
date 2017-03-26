@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+		<link rel="stylesheet" href="./assets/css/burger_style.css" type="text/css" />
+		<title>MVC Burgers!</title>
+	</head>
+	<body>
+
+
+<!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="/assets/img/burger.png" style="width:70px; height:50px" alt="">
+                </a>
+            </div>
+            
+            <!-- ik Comment out for future use Collect the nav links, forms, and other content for toggling
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">My link1</a>
+                    </li>
+                    <li>
+                        <a href="#">My link2</a>
+                    </li>
+                    <li>
+                        <a href="#">My link3</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">Login</a>
+                    </li>
+                </ul>
+            </div>
+			 END COMMENT-->
+
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+        <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                    <img src="/assets/img/burger.png" style="width:1300px; height:30px; background-color: #ffffff" al">
+                </a>
+            </div>
+    </nav>
+
+
+
+
+
+<div class="container text-center">
+	<div>
+		<img src="./assets/img/burger1.png" alt='yummy burger'>
+		<h2 class="text-center">Eat-Da-Burger!!!</h2>
+	</div>		
+	<div class="row">
+	  	<div class="col-md-6 col-sm-6 col-xs-6">
+			<ul><h2>Ready to be devoured!</h2>
+				{{#each burgers}}
+					{{#unless this.devoured}}
+						<li class"line-up-button">
+							{{this.burger_name}}
+							<form action="/{{this.id}}?_method=PUT" method="POST">
+								<input type="hidden" name="devoured" value="true">
+								<button type="submit" class="btn btn-primary btn-sm">Chow Time!</button>
+							</form>
+			  			</li>
+			  		{{/unless}}
+			  	{{/each}}
+			</ul>
+		</div>
+		<div class="col-md-6 col-sm-6 col-xs-6">
+			<ul><h2>Devoured!</h2>
+				{{#each burgers}}
+					{{#if this.devoured}}
+						<li>
+							<div>
+							{{this.burger_name}}
+							<form action="/{{this.id}}?_method=PUT" method="POST">
+								<input type="hidden" name="devoured" value="false">
+								<button class="btn btn-primary btn-sm">Yum, It was delicious!</button>
+			  				</form>
+			  				</div>
+			  			</li>
+			  		
+			  		{{/if}}
+			  	{{/each}}
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+
+
+<h2>Add a Burger</h2>
+<form class="create-update-form" action="/" method="POST">
+	<div class="form-group">
+		<label for="burge">Name:</label>
+		<input type="text" name="burger_name" placeholder="Name-da-burger!"<br>
+		<button type="submit">Add Burger</button>
+	</div>
+</form>
+
+<!-- script and spcript links below -->
+		<script src="https://code.jquery.com/jquery.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript">
+	$('.item').each(function() {
+    if (!$(this).hasClass("active")) {
+       $(this).addClass("active");
+    } else {
+      $(this).removeClass("active");
+    }
+});
+	</script>

@@ -1,0 +1,26 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvonneK/burger.git"
+  },
+  "author": "Ivonne.Komis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvonneK/burger/issues"
+  },
+  "homepage": "https://github.com/IvonneK/burger#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.7",
+    "mysql": "^2.13.0"
+  }
+}
