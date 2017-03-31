@@ -1,21 +1,37 @@
 // Set up MySQL connection.
-var mysql = require("mysql");
 console.log('connection.js');
+
+// var mysql = require("mysql");
+var Sequelize = require("sequelize");
+
 
 var PORT = process.env.PORT || 3306;
 console.log(PORT);
 
-if (process.env.JAWSDB_URL) {
-  connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {
-    var connection = mysql.createConnection({
-      port: PORT,
-      host: "localhost",
-      user: "root",
-      password: 'root',
-      database: "burgers_db"
-    });
-};
+
+
+var sequelize = new Sequelize("burgers_db","root","root", {
+  host: "localhost",
+  dialect: "mysql",
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  } 
+});
+
+
+  // if (process.env.JAWSDB_URL) {
+  //   connection = mysql.createConnection(process.env.JAWSDB_URL);
+  // } else {
+  //     var connection = mysql.createConnection({
+  //       port: PORT,
+  //       host: "localhost",
+  //       user: "root",
+  //       password: 'root',
+  //       database: "burgers_db"
+  //     });
+  // };
 
     // var connection = mysql.createConnection({
     //   port: 3306,
@@ -36,4 +52,4 @@ connection.connect(function(err) {
 });
 
 // Export connection for our ORM to use.
-module.exports = connection;
+module.exports = sequelize;
