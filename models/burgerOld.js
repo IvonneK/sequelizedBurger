@@ -3,27 +3,35 @@
 console.log('burger.js: creates functions for db' )
 
 // pull in sequelize package
-// var Sequelize = require('sequelize');
+var Sequelize = require('sequelize');
 
 // reference connection
-// var sequelize = require("../config/config.json")
+var sequelize = require("../config/config.json")
 
-module.exports = function(sequelize, DataTypes) {
-  var burger = sequelize.define('burger',  {
-            id: Datatypes.INTEGER,
-    burger_name: Datatypes.STRING ,
-                 
-    devoured: Datatypes.BOOLEAN,
-    date:  Datatypes.DATE
-  });
-  console.log(burger);
-  return burger;
-};
-
-
+var burger = sequelize.define('burger', attributes, {
+          id: {
+                type: Sequelize.INTEGER,
+                autoIncrement: true,
+                primaryKey: true
+              },
+  burger_name: {
+                type: Sequelize.STRING ,
+                allowNull: false,
+              },
+  devoured: {
+              type: Sequelize.BOOLEAN ,
+              allowNull: false,
+              defaultValue: false
+            },
+  date:  {
+              type: Sequelize.DATE,  
+              allowNull: false,
+              defaultValue: Sequelize.NOW
+           }
+});
 
 // sync with DB
-// Burger.sync();
+Burger.sync();
 
 
 // var burger = {
@@ -46,4 +54,4 @@ module.exports = function(sequelize, DataTypes) {
 // };
 
 // Export the database functions for the controller (burgersController.js).
-// module.exports = burger;
+module.exports = burger;
